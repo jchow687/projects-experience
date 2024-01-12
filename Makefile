@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Wstrict-prototypes -pedantic
-LIBS = -lm
-EXEC = coolness
-#OBJS = coolness.o
+#LIBS = -lm
+EXEC = histogram
+#OBJS = histogram.o
 
 #grabs the files that have type .c
 SOURCES = $(wildcard *.c)
@@ -13,10 +13,10 @@ OBJECTS = $(subst .c,.o,$(SOURCES))
 
 all: $(EXEC)
 
-coolness : coolness.o
-	$(CC) -o $@ $^ $(LIBS)
+histogram : histogram.o
+	$(CC) -o $@ $^ 
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
 clean:
-	rm -f $(OBJECTS) $(EXEC)
+	rm -f $(OBJECTS) $(EXEC)  
