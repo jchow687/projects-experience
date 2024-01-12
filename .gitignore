@@ -1,0 +1,16 @@
+*
+!/**/
+!*.o
+!.gitignore
+!.gitlab-ci.yml
+!*.plt
+!*.dat
+!*.tex
+!*.pdf
+!*.jpg
+!*.png
+*.pyc
+*~
+*.bak
+*.aux
+*.log
