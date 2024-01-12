@@ -1,0 +1,17 @@
+CC=gcc
+CFLAGS=-Wall -Wextra -Wpedantic
+OBJ= test_growing_arrays.o growing_arrays.o
+HEADER = growing_arrays.h
+
+.PHONY : all clean
+
+all : growing_arrays
+
+growing_arrays : ${OBJ} ${HEADER}
+	$(CC) $(OBJ) -o growing_arrays
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $<
+
+clean : 
+	rm -f growing_arrays
+	rm -f *.o
