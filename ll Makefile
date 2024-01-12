@@ -1,0 +1,17 @@
+CC=gcc
+CFLAGS=-Wall -Wextra -Wpedantic
+OBJ= test_ll_cycle.o ll_cycle.o
+HEADER = ll_cycle.h
+
+.PHONY : all clean
+
+all : check_cycle
+
+check_cycle : ${OBJ} ${HEADER}
+	$(CC) $(OBJ) -o check_cycle
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $<
+
+clean : 
+	rm -f check_cycle
+	rm -f *.o
