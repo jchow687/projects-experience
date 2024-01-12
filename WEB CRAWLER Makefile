@@ -1,0 +1,33 @@
+CC = gcc
+CFLAGS = -Wall -Werror -g
+
+all: crawler
+
+crawler: url.o crawler.o curl.o pagedir.o hashtable.o bag.o
+	$(CC) $(CFLAGS) -o crawler url.o crawler.o curl.o pagedir.o hashtable.o bag.o -lcurl
+
+url.o: url.c url.h
+	$(CC) $(CFLAGS) -c url.c
+
+crawler.o: crawler.c crawler.h url.h curl.h pagedir.h hashtable.h bag.h
+	$(CC) $(CFLAGS) -c crawler.c
+
+curl.o: curl.c curl.h
+	$(CC) $(CFLAGS) -c curl.c -lcurl
+
+pagedir.o: pagedir.c pagedir.h
+	$(CC) $(CFLAGS) -c pagedir.c
+
+hashtable.o: hashtable.c hashtable.h
+	$(CC) $(CFLAGS) -c hashtable.c
+
+bag.o: bag.c bag.h
+	$(CC) $(CFLAGS) -c bag.c
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $<
+clean:
+	rm -rf crawler
+	rm -rf *.o 
+
+
